@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3 (build 4)
+
+- Corrige : quand l'appli était déjà ouverte, approcher un tag repassait par le système Android (qui pouvait réafficher un écran système) au lieu d'être lu directement, contrairement à BambuRfidReader. Ajout du **mode lecteur** (`enableReaderMode`), activé dès que l'appli est au premier plan : elle intercepte désormais le tag directement, sans repasser par le dispatch Android. Le lancement à froid (appli fermée, on approche un tag) continue de fonctionner comme avant.
+
 ## v1.2 (build 3)
 
 **Corrige "Impossible de trouver une application prenant en charge la balise NFC"** au premier vrai test terrain.

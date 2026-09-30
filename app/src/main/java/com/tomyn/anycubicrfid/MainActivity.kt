@@ -2,6 +2,7 @@ package com.tomyn.anycubicrfid
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.NfcA
 import android.os.Bundle
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var vuCouleur: View
     private lateinit var txtStatut: TextView
     private lateinit var layoutLignesInfo: LinearLayout
+    private lateinit var nfcAdapter: NfcAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,31 @@ class MainActivity : AppCompatActivity() {
         txtStatut = findViewById(R.id.txtStatut)
         layoutLignesInfo = findViewById(R.id.layoutLignesInfo)
 
+        NfcAdapter.getDefaultAdapter(this)?.let { nfcAdapter = it }
+
         traiterIntentEventuel(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!::nfcAdapter.isInitialized) return
+
+        // Mode lecteur : des que l'appli est au premier plan, elle intercepte directement le tag,
+        // sans repasser par le systeme de dispatch Android (qui peut reafficher un ecran systeme
+        // meme quand l'appli est deja ouverte). Le callback tourne hors thread UI, d'ou le
+        // runOnUiThread. Meme approche que BambuRfidReader, plus fiable ici encore puisque ce tag
+        // n'est pas un NDEF valide.
+        nfcAdapter.enableReaderMode(
+            this,
+            NfcAdapter.ReaderCallback { tag -> runOnUiThread { lireTag(tag) } },
+            NfcAdapter.FLAG_READER_NFC_A,
+            null
+        )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (::nfcAdapter.isInitialized) nfcAdapter.disableReaderMode(this)
     }
 
     override fun onNewIntent(intent: android.content.Intent) {
