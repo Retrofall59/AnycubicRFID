@@ -35,6 +35,23 @@ Un champ (page 0x14, 4 octets) reste non expliqué — probablement une somme de
 algorithme identifié sur seulement 8 échantillons. Il n'est pas nécessaire au fonctionnement de
 l'appli et n'est pas interprété.
 
+## Fonctionnalités
+
+Comme BambuRfidReader : lecture, impression d'étiquettes (grille A4 à découper), copier/partager
+le résultat, export du dump brut, historique des scans (fichier local), et rapport de
+compatibilité à coller sur le forum. La seule fonction volontairement absente est la recherche de
+couleur équivalente par code hex : elle n'a pas de sens ici puisque le tag donne déjà le vrai nom
+de couleur (via la table vérifiée), sans avoir besoin de deviner une correspondance.
+
+## Confidentialité
+
+- **Aucune connexion réseau** : le code ne contient aucune requête réseau ni outil de suivi.
+- **Permissions déclarées** : NFC (lire les tags) et vibration (retour de fin de lecture). Rien
+  d'autre.
+- **Tes données restent chez toi** : l'historique des scans et les exports sont des fichiers
+  locaux. Rien n'est envoyé nulle part, sauf si tu utilises toi-même "Partager" ou "Enregistrer
+  sous".
+
 ## Distribution
 
 Comme pour les deux autres projets : chaque mise à jour est livrée sous forme de zip complet du

@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.5 (build 6)
+
+Port de toutes les fonctions de BambuRfidReader qui ont du sens pour Anycubic (sauf la recherche
+d'équivalent Bambu à partir d'un code couleur, propre à ce projet-là) :
+
+- **Exporter le dernier dump** (texte, vers Téléchargements/Drive via le sélecteur Android).
+- **Copier / Partager** le résultat.
+- **Historique des scans** (CSV local : date, UID, matière, couleur), avec export et suppression.
+- **Copier le rapport de compatibilité** (modèle, Android, NFC actif, dernier scan) — pour signaler un bug sur le forum.
+- **Bandeau "NFC désactivé"** avec raccourci vers les réglages.
+- **Vibration** de confirmation à chaque lecture réussie.
+- **Le résultat affiché et la file d'étiquettes survivent maintenant à une rotation d'écran** — directement fait dès cette version, plutôt que d'attendre de reproduire les deux bugs successifs déjà corrigés sur BambuRfidReader (texte affiché perdu, puis variables des boutons Exporter/Copier/Partager perdues séparément).
+
+Non portées, sciemment : le diagnostic sain/limite/défaillant et le nombre de passes réglable (spécifiques aux ratés d'authentification MIFARE Classic, sans équivalent ici où la lecture est directe), et bien sûr la recherche de couleur Bambu équivalente.
+
+## v1.4 (build 5)
+
+- Ajout de l'impression d'étiquettes, sur le même principe que BambuRfidReader : chaque bobine scannée s'ajoute à une file d'attente, le bouton propose d'imprimer une ou plusieurs étiquettes d'un coup (grille 3×7 sur page A4, à découper). Chaque étiquette affiche matière, couleur (avec pastille), code hex, poids et températures.
+
 ## v1.3 (build 4)
 
 - Corrige : quand l'appli était déjà ouverte, approcher un tag repassait par le système Android (qui pouvait réafficher un écran système) au lieu d'être lu directement, contrairement à BambuRfidReader. Ajout du **mode lecteur** (`enableReaderMode`), activé dès que l'appli est au premier plan : elle intercepte désormais le tag directement, sans repasser par le dispatch Android. Le lancement à froid (appli fermée, on approche un tag) continue de fonctionner comme avant.
