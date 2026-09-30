@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Deux blocs separes = "NfcA SEUL suffit, OU MifareUltralight seul suffit" (le meme bloc
+         demanderait les deux a la fois, ce qui a echoue sur un tag non classe MifareUltralight
+         par le systeme malgre un comportement Ultralight reel - remonte par test terrain). -->
     <tech-list>
         <tech>android.nfc.tech.NfcA</tech>
+    </tech-list>
+    <tech-list>
         <tech>android.nfc.tech.MifareUltralight</tech>
     </tech-list>
 </resources>

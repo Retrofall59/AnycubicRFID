@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2 (build 3)
+
+**Corrige "Impossible de trouver une application prenant en charge la balise NFC"** au premier vrai test terrain.
+- Cause : le filtre NFC (`nfc_tech_filter.xml`) déclarait NfcA et MifareUltralight dans un seul bloc, ce qui exige les deux technologies **à la fois** sur le tag. Sur le téléphone testé, le tag n'a apparemment pas été classé "MifareUltralight" par le système malgré un comportement Ultralight réel (puce probablement clone/rebrandée), donc aucune correspondance et Android n'a proposé aucune appli.
+- Corrigé en deux temps : le filtre déclare maintenant NfcA et MifareUltralight dans deux blocs séparés (l'un ou l'autre suffit), et la lecture elle-même n'utilise plus la classe `MifareUltralight` (qui dépend de cette même classification fragile) mais des commandes NFC-A brutes (`0x30` + numéro de page), qui fonctionnent sur n'importe quel tag NFC-A quelle que soit sa classification.
+- Aucun changement côté décodage (toujours 74 vérifications, tout passe).
+
 ## v1.1 (build 2)
 
 - Refonte visuelle : reprend la charte graphique de BambuRfidReader et PrusaTag (fond clair,

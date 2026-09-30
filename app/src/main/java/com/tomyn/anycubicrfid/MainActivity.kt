@@ -3,7 +3,7 @@ package com.tomyn.anycubicrfid
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.nfc.Tag
-import android.nfc.tech.MifareUltralight
+import android.nfc.tech.NfcA
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -56,21 +56,24 @@ class MainActivity : AppCompatActivity() {
         imgNfc.visibility = View.VISIBLE
         txtStatut.text = "Lecture en cours..."
 
-        val ultralight = MifareUltralight.get(tag)
-        if (ultralight == null) {
-            txtStatut.text = "Ce tag n'est pas un NTAG/Mifare Ultralight"
+        val nfcA = NfcA.get(tag)
+        if (nfcA == null) {
+            txtStatut.text = "Ce tag n'est pas compatible NFC-A"
             return
         }
 
         try {
-            ultralight.connect()
+            nfcA.connect()
 
-            // Le decodeur a besoin jusqu'a la page 0x1F (poids) : on lit large, jusqu'a la page 31,
-            // par blocs de 4 pages (16 octets) comme l'exige l'API MifareUltralight.
+            // Lecture en commandes ISO14443-3A brutes (0x30 + numero de page -> 16 octets/4 pages)
+            // plutot que via la classe MifareUltralight : celle-ci depend d'une classification du
+            // tag par Android qui a echoue sur un tag reel pourtant bien de ce type (test terrain).
+            // Le decodeur a besoin jusqu'a la page 0x1F (poids), on lit large jusqu'a la page 31.
             val tampon = ByteArrayOutputStream()
             var page = 0
             while (page <= 28) {
-                tampon.write(ultralight.readPages(page))
+                val reponse = nfcA.transceive(byteArrayOf(0x30, page.toByte()))
+                tampon.write(reponse)
                 page += 4
             }
             val dump = tampon.toByteArray()
@@ -86,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             txtStatut.text = "Erreur de lecture : ${e.message}"
         } finally {
-            try { ultralight.close() } catch (e: Exception) { /* rien a faire */ }
+            try { nfcA.close() } catch (e: Exception) { /* rien a faire */ }
         }
     }
 
