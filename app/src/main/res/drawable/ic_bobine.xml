@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Flasque arriere -->
+    <path
+        android:pathData="M48,10 A38,38 0 1,0 48.01,10 Z"
+        android:fillColor="#1A1A1A" />
+
+    <!-- Enroulement de filament (anneaux concentriques) -->
+    <path
+        android:pathData="M48,18 A30,30 0 1,0 48.01,18 Z"
+        android:fillColor="#FF6600" />
+    <path
+        android:pathData="M48,26 A22,22 0 1,0 48.01,26 Z"
+        android:fillColor="#FF8A42" />
+    <path
+        android:pathData="M48,33 A15,15 0 1,0 48.01,33 Z"
+        android:fillColor="#FFA366" />
+
+    <!-- Flasque avant (trou central) -->
+    <path
+        android:pathData="M48,40 A8,8 0 1,0 48.01,40 Z"
+        android:fillColor="#F5F7F7" />
+    <path
+        android:pathData="M48,44 A4,4 0 1,0 48.01,44 Z"
+        android:fillColor="#1A1A1A" />
+</vector>

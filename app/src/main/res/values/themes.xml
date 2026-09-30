@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.AnycubicRFID" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/anycubic_orange</item>
+        <item name="android:windowBackground">@color/fond_clair</item>
+    </style>
+</resources>
