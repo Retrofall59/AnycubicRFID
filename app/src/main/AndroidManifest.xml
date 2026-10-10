@@ -5,6 +5,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature android:name="android.hardware.nfc" android:required="true" />
 
+    <!-- Scan QR via la camera (porte depuis ElegooRFID le 10/10/2026) : "required=false" car
+         l'appli reste utilisable sans - la lecture NFC reste le moyen principal, le scan QR n'est
+         qu'une alternative pour consulter une bobine sans le tag physique. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,10 +32,35 @@
             <meta-data
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
+
+            <!-- Lien "anycubicrfid://dump/<hex>" encode dans le QR des etiquettes (porte depuis
+                 ElegooRFID le 10/10/2026, voir MainActivity.dessinerQr/lienQrPourDump) : permet a
+                 une appli de scan QR (ou au detecteur integre a l'appareil photo) de proposer
+                 "Ouvrir avec AnycubicRFID" sans passer par le NFC - voir
+                 MainActivity.traiterIntentEventuel pour la reception. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="anycubicrfid" android:host="dump" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".CreationTagActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ScanQrActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ImportBaseDonneesActivity"
             android:exported="false" />
 
     </application>

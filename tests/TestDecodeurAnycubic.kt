@@ -46,6 +46,17 @@ fun main() {
 
         val couleur = TableCouleursAnycubic.trouver(info.codeCouleur)
         check("$fichier : nom couleur = $nomCouleur", couleur?.nom == nomCouleur, "obtenu=${couleur?.nom}")
+
+        // Champs ajoutes le 10/10/2026 (voir DecodeurAnycubic.kt) : marque, couleur brute RGB
+        // (page 20), diametre et longueur (page 30) - communs aux 8 echantillons sauf la couleur.
+        check("$fichier : marque = AC", info.marque == "AC", "obtenu=${info.marque}")
+        check("$fichier : diametre = 1.75 mm", info.diametreMm == 1.75, "obtenu=${info.diametreMm}")
+        check("$fichier : longueur = 330 m", info.longueurMetres == 330, "obtenu=${info.longueurMetres}")
+        check(
+            "$fichier : couleur brute RGB = ${couleur?.hex}",
+            info.couleurHexBrute == couleur?.hex,
+            "obtenu=${info.couleurHexBrute}"
+        )
     }
 
     // Code couleur inconnu : jamais de nom invente

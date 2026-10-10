@@ -126,26 +126,116 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/btnImprimerEtiquette"
+            android:id="@+id/btnCloner"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginTop="14dp"
+            android:background="@drawable/fond_bouton_principal"
+            android:text="Cloner sur une bobine vierge"
+            android:textColor="@color/carte_blanc"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnAnnulerClonage"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/fond_bouton_secondaire"
+            android:text="Annuler le clonage"
+            android:textColor="@color/anycubic_noir"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnCreerTag"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/fond_bouton_secondaire"
+                android:text="Créer un tag"
+                android:textColor="@color/anycubic_noir"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnEffacer"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="44dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/fond_bouton_secondaire"
+                android:text="Effacer un tag"
+                android:textColor="@color/anycubic_noir"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnImprimerEtiquette"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/fond_bouton_principal"
             android:text="Imprimer l'étiquette"
             android:textColor="@color/carte_blanc"
             android:textAllCaps="false"
             android:textSize="13sp" />
 
-        <Button
-            android:id="@+id/btnExporter"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnExporter"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/fond_bouton_secondaire"
+                android:text="Exporter le dump"
+                android:textColor="@color/anycubic_noir"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnScannerQr"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="44dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/fond_bouton_secondaire"
+                android:text="Scanner un QR"
+                android:textColor="@color/anycubic_noir"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnImporterBase"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/fond_bouton_secondaire"
-            android:text="Exporter le dernier dump"
+            android:text="Importer une base de données"
             android:textColor="@color/anycubic_noir"
             android:textAllCaps="false"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

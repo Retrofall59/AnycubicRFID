@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fond_clair"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="14dp">
+
+            <ImageButton
+                android:id="@+id/btnRetourCreation"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="Retour" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Créer un tag personnalisé"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/texte_principal" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/fond_carte"
+            android:padding="10dp"
+            android:text="Remplis les champs ci-dessous, puis appuie sur &quot;Créer le tag&quot; - le résultat s'affiche comme après une lecture normale, prêt à cloner sur une bobine vierge."
+            android:textColor="@color/texte_secondaire"
+            android:textSize="12sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/carte_blanc">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Matière"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinnerMatiere"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Code couleur (2 lettres, pour la référence - purement indicatif)"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/champCodeCouleur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ex. PO"
+                    android:maxLength="2"
+                    android:inputType="textCapCharacters"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Couleur (hex RRGGBB, sans #) - lue en direct sur le tag"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/champCouleur"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="ex. 6A6DCD"
+                        android:maxLength="6"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@color/texte_principal"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:id="@+id/apercuCouleur"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/forme_couleur" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Poids (g)"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/champPoids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ex. 1000"
+                    android:inputType="number"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="14dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diamètre (mm)"
+                            android:textColor="@color/texte_principal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/champDiametre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="1.75"
+                            android:text="1.75"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/texte_principal"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Longueur (m)"
+                            android:textColor="@color/texte_principal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/champLongueur"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="330"
+                            android:text="330"
+                            android:inputType="number"
+                            android:textColor="@color/texte_principal"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Température buse (°C) : défaut / min / max"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/champTempDefaut"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="défaut, ex. 200"
+                        android:inputType="number"
+                        android:textColor="@color/texte_principal"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/champTempMin"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:hint="min, ex. 190"
+                        android:inputType="number"
+                        android:textColor="@color/texte_principal"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/champTempMax"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:hint="max, ex. 230"
+                        android:inputType="number"
+                        android:textColor="@color/texte_principal"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Température plateau (°C)"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/champTempPlateau"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ex. 50"
+                    android:inputType="number"
+                    android:textColor="@color/texte_principal"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Quantité (tags identiques)"
+            android:textColor="@color/texte_principal"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/champQuantite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1"
+            android:inputType="number"
+            android:text="1"
+            android:textColor="@color/texte_principal"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnCreerTag"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/fond_bouton_principal"
+            android:text="Créer le tag"
+            android:textColor="@color/carte_blanc"
+            android:textAllCaps="false"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</ScrollView>
