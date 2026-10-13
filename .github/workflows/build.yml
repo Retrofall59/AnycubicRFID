@@ -52,8 +52,8 @@ jobs:
       # simple push de branche. Contrairement a l'artifact d'Actions ci-dessus (expire, demande
       # un compte GitHub pour le telecharger), une Release reste en ligne indefiniment avec un
       # lien stable, telechargeable par n'importe qui sans etre connecte.
-      - name: Publier une Release (seulement sur un tag v*)
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Publier une Release (seulement sur un tag)
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2.0.8
         with:
           files: ${{ env.APK_NOM }}.apk
